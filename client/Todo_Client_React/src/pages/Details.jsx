@@ -3,11 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 
 function TodoDetail() {
   const { id } = useParams();
-  const [todo, setTodo] = useState(null);
+  const [todo, setTodo] = useState();
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8088/todos/${id}`)
+    fetch(`http://192.168.0.170:8088/todos/${id}`)
       .then((res) => res.json())
       .then((data) => setTodo(data));
   }, [id]);

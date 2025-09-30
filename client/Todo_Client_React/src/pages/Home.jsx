@@ -9,7 +9,7 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:8088/todos")
+    fetch("http://192.168.0.170:8088/todos")
       .then((res) => res.json())
       .then((data) =>
         setTodos(data.map((todo) => ({ ...todo, visible: true })))
@@ -22,7 +22,7 @@ function Home() {
 
     const todo = { task: newTodo };
 
-    fetch("http://localhost:8088/todos", {
+    fetch("http://192.168.0.170:8088/todos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(todo),
@@ -43,7 +43,7 @@ function Home() {
   function checkDone(id) {
     const todo = todos.find((t) => t.id === id);
     if (!todo) return;
-    fetch(`http://localhost:8088/todos/${id}`, {
+    fetch(`http://192.168.0.170:8088/todos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...todo, status: !todo.status }),
@@ -62,7 +62,7 @@ function Home() {
       prev.map((t) => (t.id === id ? { ...t, visible: false } : t))
     );
     setTimeout(() => {
-      fetch(`http://localhost:8088/todos/${id}`, { method: "DELETE" }).then(
+      fetch(`http://192.168.0.170:8088/todos/${id}`, { method: "DELETE" }).then(
         () => setTodos((prev) => prev.filter((todo) => todo.id !== id))
       )
       .then(() => toast.success("Todo deleted!"));;
@@ -70,8 +70,8 @@ function Home() {
   }
 
   return (
-    <div className="h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-4 sm:p-8">
-      <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-md p-6 mt-16">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100 xl:p-4 p-3">
+      <div className="xl:w-2/5 sm:w-full h-auto mx-auto bg-white rounded-2xl shadow-md p-6">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
           ✨ Todo List
         </h1>
