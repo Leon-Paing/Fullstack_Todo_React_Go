@@ -24,6 +24,7 @@ client/Todo_Client_React/src/pages
 ---
 ### Backend (Go)
 server/
+
 ├── todoCRUD.go -> main function with API routes
 ---
 ## Getting Started
