@@ -24,7 +24,7 @@ client/Todo_Client_React/src/pages
 
 server/
 
-├── todoCRUD.go # main function with API routes
+├── todoCRUD.go -> main function with API routes
 
 ## Getting Started
 
