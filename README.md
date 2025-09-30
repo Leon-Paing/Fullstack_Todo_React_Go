@@ -19,8 +19,8 @@ A simple fullstack TODO application built with **React** for the frontend and **
 ### Frontend (React)
 client/Todo_Client_React/src/pages
 ---
-├── Home.jsx       # Main page for listing, adding, deleting, and checking TODOs <br>
-└── Details.jsx    # Page to view detailed information of a TODO
+├── Home.jsx       -> Main page for listing, adding, deleting, and checking TODOs <br>
+└── Details.jsx    -> Page to view detailed information of a TODO
 
 server/
 
