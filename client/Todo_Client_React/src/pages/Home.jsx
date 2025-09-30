@@ -106,7 +106,6 @@ function Home() {
               <div
                 onClick={() => {
                     navigate(`/todos/${todo.id}`)
-                    checkDone(todo.id)
                 }}
               >
                 <span className={`text-blue-700 font-medium cursor-pointer hover:underline ${
