@@ -22,8 +22,9 @@ client/Todo_Client_React/src/pages
 ├── Home.jsx       -> Main page for listing, adding, deleting, and checking TODOs <br>
 └── Details.jsx    -> Page to view detailed information of a TODO
 
-### server/
-
+### Backend (Go)
+server/
+---
 ├── todoCRUD.go -> main function with API routes
 
 ## Getting Started
