@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
+  const baseURL = import.meta.env.VITE_API_ENDPOINT
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://192.168.0.170:8088/todos")
+    fetch(`${baseURL}/todos`)
       .then((res) => res.json())
       .then((data) =>
         setTodos(data.map((todo) => ({ ...todo, visible: true })))
@@ -22,7 +23,7 @@ function Home() {
 
     const todo = { task: newTodo };
 
-    fetch("http://192.168.0.170:8088/todos", {
+    fetch(`${baseURL}/todos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(todo),
@@ -43,7 +44,7 @@ function Home() {
   function checkDone(id) {
     const todo = todos.find((t) => t.id === id);
     if (!todo) return;
-    fetch(`http://192.168.0.170:8088/todos/${id}`, {
+    fetch(`${baseURL}/todos/todos/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...todo, status: !todo.status }),
@@ -62,7 +63,7 @@ function Home() {
       prev.map((t) => (t.id === id ? { ...t, visible: false } : t))
     );
     setTimeout(() => {
-      fetch(`http://192.168.0.170:8088/todos/${id}`, { method: "DELETE" }).then(
+      fetch(`${baseURL}/todos/${id}`, { method: "DELETE" }).then(
         () => setTodos((prev) => prev.filter((todo) => todo.id !== id))
       )
       .then(() => toast.success("Todo deleted!"));;

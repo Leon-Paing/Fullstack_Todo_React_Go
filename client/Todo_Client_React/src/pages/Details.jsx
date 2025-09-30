@@ -5,9 +5,10 @@ function TodoDetail() {
   const { id } = useParams();
   const [todo, setTodo] = useState();
   const navigate = useNavigate();
+  const baseURL = import.meta.env.VITE_API_ENDPOINT
 
   useEffect(() => {
-    fetch(`http://192.168.0.170:8088/todos/${id}`)
+    fetch(`${baseURL}/todos/todos/${id}`)
       .then((res) => res.json())
       .then((data) => setTodo(data));
   }, [id]);
